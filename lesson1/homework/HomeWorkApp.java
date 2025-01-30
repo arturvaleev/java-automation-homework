@@ -3,6 +3,7 @@ public class HomeWorkApp {
 
         printThreeWords();
         checkSumSign();
+        printColor();
         compareNumbers(30, 30);
 
     }
