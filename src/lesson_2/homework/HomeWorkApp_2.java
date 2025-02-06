@@ -22,39 +22,29 @@ public class HomeWorkApp_2 {
     }
 
     public static boolean isSumInRange(int a, int b) {
-
         return (a + b) >= 10 && (a + b) <= 20;
-
     }
 
     public static void printNumberSign(int a) {
-
         if (a >= 0) {
             System.out.println("Положительное");
         } else {
             System.out.println("Отрицательное");
         }
-
     }
 
     public static boolean isNegativeNumber(int a) {
-
         return a < 0;
-
     }
 
     public static void printStringMultipleTimes(String str, int count) {
-
         for (int i = 0; i < count; i++){
             System.out.println(str);
         }
-
     }
 
     public static boolean isLeapYear(int year) {
-
         return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
-
     }
 
 }
