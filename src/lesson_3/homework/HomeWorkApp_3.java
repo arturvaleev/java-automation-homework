@@ -5,40 +5,40 @@ public class HomeWorkApp_3 {
     public static void main(String[] args) {
 
         System.out.println("\t===invertArray===");
-        int[] Arr = {1,1,0,0,1,0,1,1,0,0};
-        printOneArray("Before inversion", Arr);
-        invertArray(Arr);
-        printOneArray("After inversion", Arr);
+        int[] arr = {1,1,0,0,1,0,1,1,0,0};
+        printOneArray("Before inversion", arr);
+        invertArray(arr);
+        printOneArray("After inversion", arr);
 
         System.out.println("\n\t===fillArraySequentially===");
-        int[] Arr2 = new int[100];
-        fillArraySequentially(Arr2);
-        printOneArray(Arr2);
+        int[] arr2 = new int[100];
+        fillArraySequentially(arr2);
+        printOneArray(arr2);
 
         System.out.println("\n\t===multiplyIfLessThanSix===");
-        int[] Arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        printOneArray("Before executing the multiplyIfLessThanSix method", Arr3);
-        multiplyIfLessThanSix(Arr3);
-        printOneArray("After executing the multiplyIfLessThanSix method", Arr3);
+        int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        printOneArray("Before executing the multiplyIfLessThanSix method", arr3);
+        multiplyIfLessThanSix(arr3);
+        printOneArray("After executing the multiplyIfLessThanSix method", arr3);
 
         System.out.println("\n\t===fillDiagonalsWithOnes===");
-        int[][] Arr4 = new int[5][5];
-        fillDiagonalsWithOnes(Arr4);
-        printTwoArrayInt(Arr4);
+        int[][] arr4 = new int[11][11];
+        fillDiagonalsWithOnes(arr4);
+        printTwoArrayInt(arr4);
 
 
         System.out.println("\n\t===createArrayWithInitialValue===");
         printOneArray(createArrayWithInitialValue(3, 3));
 
         System.out.println("\n\t===findMinMaxInArray===");
-        int[] Arr5 = {-10, 0, -1, 5, 8, 3};
-        printOneArray(Arr5);
-        System.out.printf("Min = %d | Max = %d", findMinInArray(Arr5), findMaxInArray(Arr5));
+        int[] arr5 = {-10, 0, -1, 5, 8, 3};
+        printOneArray(arr5);
+        System.out.printf("Min = %d | Max = %d", findMinInArray(arr5), findMaxInArray(arr5));
 
         System.out.println("\n\t===checkBalance===");
-        int[] Arr6 = {1,1,2,1,3};
-        printOneArray(Arr6);
-        System.out.println(checkBalance(Arr6));
+        int[] arr6 = {1,1,2,1,3};
+        printOneArray(arr6);
+        System.out.println(checkBalance(arr6));
 
     }
 
@@ -67,12 +67,10 @@ public class HomeWorkApp_3 {
     }
 
     public static void fillDiagonalsWithOnes(int[][] arr) {
-        for (int i = 0; i < arr.length; i++){
-            for (int j = 0; j < arr.length; j++){
-                if (i == j){
-                    arr[i][j] = 1;
-                    arr[i][(arr.length-1) - j] = 1;
-                }
+        for (int i = 0, j = 0; i < arr.length; i++, j++){
+            if (i == j){
+                arr[i][j] = 1;
+                arr[i][(arr.length-1) - j] = 1;
             }
         }
     }
@@ -102,18 +100,18 @@ public class HomeWorkApp_3 {
     }
 
     public static boolean checkBalance(int[] arr){
-        int tmp = arr[0];
-        int tmp2 = 0;
+        int leftSum = arr[0];
+        int rightSum = 0;
 
         for (int i = 1; i < arr.length; i++){
             for (int j = 0+i; j < arr.length; j++){
-                tmp2 += arr[j];
+                rightSum += arr[j];
             }
-            if (tmp == tmp2){
+            if (leftSum == rightSum){
                 return true;
             }
-            tmp2 = 0;
-            tmp += arr[i];
+            rightSum = 0;
+            leftSum += arr[i];
         }
         return false;
     }
