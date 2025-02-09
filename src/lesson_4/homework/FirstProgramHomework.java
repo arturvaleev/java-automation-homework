@@ -119,9 +119,6 @@ public class FirstProgramHomework {
             System.out.println("Player found exit!");
         }
 
-        map[currentY][currentX] = emptyCell;                                         // Решить проблему в default метода directionPlayer - пользователь исчезает, если ввести некорректное передвижение
-        map[playerY][playerX] = player;                                              // Думаю, что проблема была здесь, т.к. мы сначала устанавливали координаты player, а затем очищали поле, из-за чего, в случае если player оставался на месте, мы его меняли на emptyCell. Для решения поменял строки местами.
-
         visibleMap[currentY][currentX] = emptyCell;                                   // Добавил очищение поля после хода игрока, для массива который будет показан в консоли
         visibleMap[playerY][playerX] = player;                                        // Добавил новые координаты после хода игрока, для массива который будет показан в консоли
     }
@@ -146,23 +143,16 @@ public class FirstProgramHomework {
         for (int i = 0; i < mapHeight; i++) {
             for (int j = 0; j < mapWidth; j++) {
                 map[i][j] = emptyCell;
-            }
-        }
-
-        for (int i = 0; i < mapHeight; i++) {                  // Добавил цикл для заполнения пустых полей массива для показа в консоли
-            for (int j = 0; j < mapWidth; j++) {
                 visibleMap[i][j] = emptyCell;
             }
         }
 
-//        System.out.println("Map created. Size " + mapHeight + "x" + mapWidth);
         System.out.printf("Map created. Size %sx%s\n", mapHeight, mapWidth);
     }
 
     public static void createPlayer() {
         playerX = getRandomValue(0, mapWidth - 1);
         playerY = getRandomValue(0, mapHeight - 1);
-        map[playerY][playerX] = player;
 
         visibleMap[playerY][playerX] = player;
 
@@ -221,15 +211,6 @@ public class FirstProgramHomework {
     }
 
     public static void printMap() {
-/*        System.out.println("========== MAP ==========");                             // Скрыл основной массив
-        for (int i = 0; i < mapHeight; i++) {
-            for (int j = 0; j < mapWidth; j++) {
-                System.out.print(map[i][j] + "|");
-            }
-            System.out.println();
-        }
-        System.out.println("=========================");
-*/
 
         System.out.println("========== visualMap ==========");                       //Добавил вывод массива с скрытыми всеми сущностями, кроме Player
         for (int i = 0; i < mapHeight; i++) {
