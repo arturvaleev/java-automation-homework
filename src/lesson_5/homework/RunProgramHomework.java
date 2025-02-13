@@ -16,7 +16,7 @@ public class RunProgramHomework {
 
         for (int i = 0; i < employees.length; i++){                 //С помощью цикла вывожу информацию только о сотрудниках старше 40 лет
             if (employees[i].getAge() > 40){
-                employees[i].printEmployee();
+                EmployeePrinter.printEmployee(employees[i]);
             }
         }
 

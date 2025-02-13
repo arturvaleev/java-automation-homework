@@ -18,63 +18,11 @@ public class Employee {
         this.age = age;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
     public int getAge() {
         return age;
     }
 
-    public void printEmployee () {
-        System.out.println("Сотрудник: ");
-        System.out.println("ФИО: " + this.fullName);
-        System.out.println("Должность: " + this.position);
-        System.out.println("E-mail: " + this.email);
-        System.out.println("Телефон: " + this.phoneNumber);
-        System.out.println("Зарплата: " + this.salary);
-        System.out.println("Возраст: " + this.age);
-        System.out.println();
+    public String getInfo(){
+        return "Я " + this.fullName + ", работаю " + this.position + ", мне " + this.age + " лет, моя зарплата " + this.salary + " руб.";
     }
-
 }
