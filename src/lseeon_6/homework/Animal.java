@@ -2,15 +2,11 @@ package lseeon_6.homework;
 
 public abstract class Animal {
 
-    protected String name;
-    protected int maxRunDistance;
-    protected int maxSwimDistance;
+    private String name;
     private static int countAnimal;
 
-    public Animal(String name, int maxRunDistance, int maxSwimDistance) {
+    public Animal(String name) {
         this.name = name;
-        this.maxRunDistance = maxRunDistance;
-        this.maxSwimDistance = maxSwimDistance;
         countAnimal++;
     }
 
@@ -19,9 +15,9 @@ public abstract class Animal {
 
     public void run(int distance){
         if (distance <= getMaxRunDistance()){
-            System.out.println(name + " пробежал " + distance + " метров");
+            System.out.println(this.name + " пробежал(а) " + distance + " метров");
         } else {
-            System.out.println(name + " пробежал " + maxRunDistance + " метров и устал, остальные " + (distance - getMaxRunDistance()) + " метров его пришлось нести на руках.");
+            System.out.println(this.name + " пробежал " + getMaxRunDistance() + " метров и устал, остальные " + (distance - getMaxRunDistance()) + " метров его пришлось нести на руках.");
         }
     }
 
@@ -31,11 +27,11 @@ public abstract class Animal {
 
     public void swim(int distance){
         if (!canSwim()){
-            System.out.println("О чём вы думали, " + name + " не умеет плавать, он(а) мог(ла) утонуть.");
+            System.out.println("О чём вы думали, " + this.name + " не умеет плавать, он(а) мог(ла) утонуть.");
         } else if (distance <= getMaxSwimDistance()) {
-            System.out.println(name + " проплыл " + distance + " метров.");
+            System.out.println(this.name + " проплыл " + distance + " метров.");
         } else {
-            System.out.println(name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум. Он не сможет проплыть " + distance + " метров.");
+            System.out.println(this.name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум. Он не может проплыть " + distance + " метров.");
         }
     }
 

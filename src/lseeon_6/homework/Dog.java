@@ -7,7 +7,7 @@ public class Dog extends Animal {
     private static int countDog;
 
     public Dog(String name) {
-        super(name, MAX_RUN_DISTANCE, MAX_SWIM_DISTANCE);
+        super(name);
         countDog++;
     }
 
