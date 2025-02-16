@@ -25,13 +25,17 @@ public abstract class Animal {
         }
     }
 
+    private boolean canSwim(){
+        return getMaxSwimDistance() > 0;
+    }
+
     public void swim(int distance){
-        if (getMaxSwimDistance() == 0){
-            System.out.println("О чём вы думали, " + name + " не умеет плавать, он мог утонуть.");
+        if (!canSwim()){
+            System.out.println("О чём вы думали, " + name + " не умеет плавать, он(а) мог(ла) утонуть.");
         } else if (distance <= getMaxSwimDistance()) {
             System.out.println(name + " проплыл " + distance + " метров.");
         } else {
-            System.out.println(name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум.");
+            System.out.println(name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум. Он не сможет проплыть " + distance + " метров.");
         }
     }
 
