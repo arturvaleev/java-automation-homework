@@ -7,11 +7,11 @@ public class LaunchClassHomework {
 
     public static void main(String[] args) {
 
-        Cat cat1 = new Cat(getCatNames());
+        Animal cat1 = new Cat(getCatNames());
         cat1.run(getRandomValue(0,500));
         cat1.swim(getRandomValue(0,50));
 
-        Dog dog1 = new Dog(getDogNames());
+        Animal dog1 = new Dog(getDogNames());
         dog1.run(getRandomValue(0,1000));
         dog1.swim(getRandomValue(0,50));
 

@@ -13,7 +13,7 @@ public abstract class Animal {
     protected abstract int getMaxRunDistance();
     protected abstract int getMaxSwimDistance();
 
-    public void run(int distance){
+    protected void run(int distance){
         if (distance <= getMaxRunDistance()){
             System.out.println(this.name + " пробежал(а) " + distance + " метров");
         } else {
@@ -25,7 +25,7 @@ public abstract class Animal {
         return getMaxSwimDistance() > 0;
     }
 
-    public void swim(int distance){
+    protected void swim(int distance){
         if (!canSwim()){
             System.out.println("О чём вы думали, " + this.name + " не умеет плавать, он(а) мог(ла) утонуть.");
         } else if (distance <= getMaxSwimDistance()) {
