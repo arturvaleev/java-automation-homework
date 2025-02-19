@@ -3,7 +3,7 @@ package lseeon_6.homework;
 public abstract class Animal {
 
     private String name;
-    private static int countAnimal;
+    public static int countAnimal;
 
     public Animal(String name) {
         this.name = name;
@@ -13,11 +13,11 @@ public abstract class Animal {
     protected abstract int getMaxRunDistance();
     protected abstract int getMaxSwimDistance();
 
-    protected void run(int distance){
+    protected String run(int distance){
         if (distance <= getMaxRunDistance()){
-            System.out.println(this.name + " пробежал(а) " + distance + " метров");
+            return this.name + " пробежал(а) " + distance + " метров";
         } else {
-            System.out.println(this.name + " пробежал " + getMaxRunDistance() + " метров и устал, остальные " + (distance - getMaxRunDistance()) + " метров его пришлось нести на руках.");
+            return this.name + " пробежал(а) " + getMaxRunDistance() + " метров и устал(а), остальные " + (distance - getMaxRunDistance()) + " метров его пришлось нести на руках.";
         }
     }
 
@@ -25,17 +25,13 @@ public abstract class Animal {
         return getMaxSwimDistance() > 0;
     }
 
-    protected void swim(int distance){
+    protected String swim(int distance){
         if (!canSwim()){
-            System.out.println("О чём вы думали, " + this.name + " не умеет плавать, он(а) мог(ла) утонуть.");
+            return "О чём вы думали, " + this.name + " не умеет плавать, он(а) мог(ла) утонуть.";
         } else if (distance <= getMaxSwimDistance()) {
-            System.out.println(this.name + " проплыл " + distance + " метров.");
+            return this.name + " проплыл " + distance + " метров.";
         } else {
-            System.out.println(this.name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум. Он не может проплыть " + distance + " метров.");
+            return this.name + " проплыл " +  getMaxSwimDistance() + " метров и начал тонуть. Кажется это его максимум. Он не может проплыть " + distance + " метров.";
         }
-    }
-
-    public static int getCountAnimal() {
-        return countAnimal;
     }
 }

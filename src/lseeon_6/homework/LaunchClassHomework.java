@@ -8,16 +8,16 @@ public class LaunchClassHomework {
     public static void main(String[] args) {
 
         Animal cat1 = new Cat(getCatNames());
-        cat1.run(getRandomValue(0,500));
-        cat1.swim(getRandomValue(0,50));
+        System.out.println(cat1.run(getRandomValue(0,500)));
+        System.out.println(cat1.swim(getRandomValue(0,50)));
 
         Animal dog1 = new Dog(getDogNames());
-        dog1.run(getRandomValue(0,1000));
-        dog1.swim(getRandomValue(0,50));
+        System.out.println(dog1.run(getRandomValue(0,1000)));
+        System.out.println(dog1.swim(getRandomValue(0,50)));
 
-        System.out.println(Animal.getCountAnimal());
-        System.out.println(Cat.getCountCat());
-        System.out.println(Dog.getCountDog());
+        System.out.println(Animal.countAnimal);
+        System.out.println(Cat.countCat);
+        System.out.println(Dog.countDog);
 
     }
 
