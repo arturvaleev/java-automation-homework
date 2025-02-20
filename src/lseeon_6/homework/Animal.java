@@ -4,8 +4,8 @@ public abstract class Animal {
 
     private String name;
     public static int countAnimal;
-    protected int MAX_RUN_DISTANCE;
-    protected int MAX_SWIM_DISTANCE;
+    protected int maxRunDistance;
+    protected int maxSwimDistance;
 
     public Animal(String name) {
         this.name = name;
@@ -13,24 +13,24 @@ public abstract class Animal {
     }
 
     protected String run(int distance){
-        if (distance <= MAX_RUN_DISTANCE){
+        if (distance <= maxRunDistance){
             return this.name + " пробежал(а) " + distance + " метров";
         } else {
-            return this.name + " пробежал(а) " + MAX_RUN_DISTANCE + " метров и устал(а), остальные " + (distance - MAX_RUN_DISTANCE) + " метров его пришлось нести на руках.";
+            return this.name + " пробежал(а) " + maxRunDistance + " метров и устал(а), остальные " + (distance - maxRunDistance) + " метров его пришлось нести на руках.";
         }
     }
 
     private boolean canSwim(){
-        return MAX_SWIM_DISTANCE > 0;
+        return maxSwimDistance > 0;
     }
 
     protected String swim(int distance){
         if (!canSwim()){
             return "О чём вы думали, " + this.name + " не умеет плавать, он(а) мог(ла) утонуть.";
-        } else if (distance <= MAX_SWIM_DISTANCE) {
+        } else if (distance <= maxSwimDistance) {
             return this.name + " проплыл " + distance + " метров.";
         } else {
-            return this.name + " проплыл " +  MAX_SWIM_DISTANCE + " метров и начал тонуть. Кажется это его максимум. Он не может проплыть " + distance + " метров.";
+            return this.name + " проплыл " +  maxSwimDistance + " метров и начал тонуть. Кажется это его максимум. Он не может проплыть " + distance + " метров.";
         }
     }
 }

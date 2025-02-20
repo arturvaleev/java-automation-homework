@@ -7,11 +7,16 @@ public class LaunchClassHomework {
 
     public static void main(String[] args) {
 
-        Animal cat1 = new Cat(getCatNames());
+        int maxRunDistanceCat = 200;
+        int maxSwimDistanceCat = 0;
+        int maxRunDistanceDog = 500;
+        int maxSwimDistanceDog = 10;
+
+        Animal cat1 = new Cat(getCatNames(), maxRunDistanceCat, maxSwimDistanceCat);
         System.out.println(cat1.run(getRandomValue(0,500)));
         System.out.println(cat1.swim(getRandomValue(0,50)));
 
-        Animal dog1 = new Dog(getDogNames());
+        Animal dog1 = new Dog(getDogNames(),maxRunDistanceDog, maxSwimDistanceDog);
         System.out.println(dog1.run(getRandomValue(0,1000)));
         System.out.println(dog1.swim(getRandomValue(0,50)));
 
