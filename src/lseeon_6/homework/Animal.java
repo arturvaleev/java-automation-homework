@@ -4,11 +4,13 @@ public abstract class Animal {
 
     private String name;
     public static int countAnimal;
-    protected int maxRunDistance;
-    protected int maxSwimDistance;
+    private int maxRunDistance;
+    private int maxSwimDistance;
 
-    public Animal(String name) {
+    public Animal(String name, int maxRunDistance, int maxSwimDistance) {
         this.name = name;
+        this.maxRunDistance = maxRunDistance;
+        this.maxSwimDistance = maxSwimDistance;
         countAnimal++;
     }
 
