@@ -1,4 +1,4 @@
-package lseeon_6.homework;
+package lesson_6.homework;
 import java.util.Random;
 
 public class LaunchClassHomework {

@@ -1,4 +1,4 @@
-package lseeon_6.homework;
+package lesson_6.homework;
 
 public class Cat extends Animal {
     public static int countCat;
