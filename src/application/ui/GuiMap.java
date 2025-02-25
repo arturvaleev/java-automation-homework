@@ -48,13 +48,12 @@ public class GuiMap extends JPanel {
         setBackground(Color.ORANGE);
     }
 
-    public void showMap(){
+    public void showMap(JButton[][] buttons){
 
         removeAll();
 
         setLayout(new GridLayout(mapHeight, mapWidth));
 
-        JButton[][] buttons = new JButton[mapHeight][mapWidth];
 
         for (int i = 0; i < mapHeight; i++) {
             for (int j = 0; j < mapWidth; j++) {
@@ -72,9 +71,7 @@ public class GuiMap extends JPanel {
 
         window.updatePlayerInfo(player.getHealth(), player.getPower(), player.getY(), player.getX());
 
-        if (player.getHealth() < 0){
-            window.playerLose();
-        }
+        isPlayerLose();
 
     }
 
@@ -84,6 +81,7 @@ public class GuiMap extends JPanel {
     public void startNewGame() {
         player = new Player();
         createMap();
+        createMapButtons();
         createPlayer();
         createHealthPack();
         createEnemies();
@@ -214,5 +212,16 @@ public class GuiMap extends JPanel {
 
     private boolean isEmptyCell(int y, int x) {
         return map[y][x] == CELL_EMPTY && invisibleMap[y][x] == CELL_EMPTY;
+    }
+
+    private void isPlayerLose(){
+        if (player.getHealth() < 0){
+            window.playerLose();
+        }
+    }
+
+    public JButton [][] createMapButtons(){
+        JButton[][] buttons = new JButton[mapHeight][mapWidth];
+        return buttons;
     }
 }

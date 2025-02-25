@@ -43,7 +43,7 @@ public class MainWindow extends JFrame {
     }
 
     public void showMap(){
-        guiMap.showMap();
+        guiMap.showMap(guiMap.createMapButtons());
     }
 
     public void directionPlayer(int keyButton){
