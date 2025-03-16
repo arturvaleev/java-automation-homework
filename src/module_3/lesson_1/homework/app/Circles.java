@@ -1,10 +1,12 @@
 package module_3.lesson_1.homework.app;
 
+import module_3.lesson_1.homework.app.models.Sprite;
 import module_3.lesson_1.homework.app.objects.Circle;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Created by Aleksandr Gladkov [Anticisco]
@@ -18,7 +20,11 @@ public class Circles extends JFrame {
     private static final int POS_X = 500;
     private static final int POS_Y = 260;
 
-    Circle[] sprites = new Circle[5];
+    //Считаю количество текущих шаров
+    public int countCircles = 5;
+
+    //Установил изначально 100 ячеек для объектов, так как динамически массив расширить не получится
+    Circle[] sprites = new Circle[100];
 
     public Circles() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -28,13 +34,22 @@ public class Circles extends JFrame {
 
         Canvas canvas = new Canvas(this);
         add(canvas, BorderLayout.CENTER);
+
+        //Добавил слушателя
+        canvas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                addSpritesClick ();
+            }
+        });
+
         addSprites();
 
         setVisible(true);
     }
 
     private void addSprites() {
-        for (int i = 0; i < sprites.length; i++) {
+        for (int i = 0; i < 5; i++) {
             sprites[i] = new Circle();
         }
     }
@@ -45,14 +60,20 @@ public class Circles extends JFrame {
     }
 
     private void update(Canvas canvas, float deltaTime) {
-        for (int i = 0; i < sprites.length; i++) {
-            sprites[i].update(canvas, deltaTime);
+        for (int i = 0; i < countCircles; i++) {
+            sprites[i].update(canvas, deltaTime, sprites, countCircles);
         }
     }
 
     private void render(Canvas canvas, Graphics g) {
-        for (int i = 0; i < sprites.length; i++) {
+        for (int i = 0; i < countCircles; i++) {
             sprites[i].render(canvas, g);
         }
+    }
+
+    //Метод для добавления шаров по клику (добавляю объект Circle в свободную ячейку массива)
+    void addSpritesClick () {
+        sprites[countCircles] = new Circle();
+        countCircles++;
     }
 }

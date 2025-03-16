@@ -12,8 +12,8 @@ import java.awt.*;
 
 public class Circle extends Sprite {
 
-    private float vectorX = (float) (100 + Math.random() * 250f);
-    private float vectorY = (float) (100 + Math.random() * 250f);
+    public float vectorX = (float) (100 + Math.random() * 250f);
+    public float vectorY = (float) (100 + Math.random() * 250f);
     private final Color color = new Color(
             (int) (Math.random() * 255),
             (int) (Math.random() * 255),
@@ -36,7 +36,7 @@ public class Circle extends Sprite {
     }
 
     @Override
-    public void update(Canvas canvas, float deltaTime) {
+    public void update(Canvas canvas, float deltaTime, Sprite[] sprites, int countCircles) {
         x += vectorX * deltaTime;
         y += vectorY * deltaTime;
 
@@ -55,6 +55,27 @@ public class Circle extends Sprite {
         if (getBottom() > canvas.getBottom()) {
             setBottom(canvas.getBottom());
             vectorY = -vectorY;
+        }
+
+        //Проверяю шары на столкновение и меняю их направление
+        for (int i = 0; i < countCircles; i++){
+
+            //Проверка для исключения проверки столкновения шара с собой
+            if (this == sprites[i]){
+                continue;
+            }
+
+            //Проверяю шары на столкновение ( Использую очень сомнительную логику =) )
+            if ((Math.abs(this.x - sprites[i].getX()) < (this.halfWidth + sprites[i].getHalfWidth())) && (Math.abs(this.y - sprites[i].getY()) < (this.halfHeight + sprites[i].getHalfHeight()))){
+                this.vectorX = -this.vectorX;
+
+                Circle otherCircle = (Circle) sprites[i];
+                otherCircle.vectorX = -otherCircle.vectorX;
+
+                this.vectorY = -this.vectorY;
+
+                otherCircle.vectorY = -otherCircle.vectorY;
+            }
         }
     }
 }
