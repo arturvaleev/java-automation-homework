@@ -1,6 +1,7 @@
 package module_3.lesson_1.homework.app.models;
 
 import module_3.lesson_1.homework.app.Canvas;
+import module_3.lesson_1.homework.app.objects.Circle;
 
 import java.awt.*;
 
@@ -10,6 +11,7 @@ import java.awt.*;
  */
 
 public abstract class Sprite {
+
 
     protected float x;
     protected float y;
@@ -75,7 +77,6 @@ public abstract class Sprite {
     protected abstract void render(Canvas canvas, Graphics g);
 
     //Добавил передачу массива Sprite и переменную количества шаров
-    protected abstract void update(Canvas canvas, float deltaTime, Sprite[] sprites, int countCircles);
-
+    protected abstract void update(Canvas canvas, float deltaTime, Sprite[] sprites);
 
 }

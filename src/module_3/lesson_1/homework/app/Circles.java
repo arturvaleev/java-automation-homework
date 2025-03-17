@@ -22,9 +22,9 @@ public class Circles extends JFrame {
 
     //Считаю количество текущих шаров
     public int countCircles = 5;
-
-    //Установил изначально 100 ячеек для объектов, так как динамически массив расширить не получится
-    Circle[] sprites = new Circle[100];
+    public int maxCircles = 15;
+    //Установил изначально 15 ячеек для объектов, так как динамически массив расширить не получится
+    Circle[] sprites = new Circle[maxCircles];
 
     public Circles() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +49,7 @@ public class Circles extends JFrame {
     }
 
     private void addSprites() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < countCircles; i++) {
             sprites[i] = new Circle();
         }
     }
@@ -61,7 +61,7 @@ public class Circles extends JFrame {
 
     private void update(Canvas canvas, float deltaTime) {
         for (int i = 0; i < countCircles; i++) {
-            sprites[i].update(canvas, deltaTime, sprites, countCircles);
+            sprites[i].update(canvas, deltaTime, sprites);
         }
     }
 
@@ -73,7 +73,11 @@ public class Circles extends JFrame {
 
     //Метод для добавления шаров по клику (добавляю объект Circle в свободную ячейку массива)
     void addSpritesClick () {
+        if (countCircles < maxCircles){
         sprites[countCircles] = new Circle();
-        countCircles++;
+        countCircles++;}
+        else {
+            System.out.println("Достигнуто максимальное количество шаров");
+        }
     }
 }
