@@ -1,6 +1,5 @@
 package module_3.lesson_1.homework.app;
 
-import module_3.lesson_1.homework.app.models.Sprite;
 import module_3.lesson_1.homework.app.objects.Circle;
 
 import javax.swing.*;
@@ -21,8 +20,8 @@ public class Circles extends JFrame {
     private static final int POS_Y = 260;
 
     //Считаю количество текущих шаров
-    public int countCircles = 5;
-    public int maxCircles = 15;
+    private int countCircles = 5;
+    private int maxCircles = 15;
     //Установил изначально 15 ячеек для объектов, так как динамически массив расширить не получится
     Circle[] sprites = new Circle[maxCircles];
 
@@ -39,7 +38,10 @@ public class Circles extends JFrame {
         canvas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                addSpritesClick ();
+                //Вызываю метод провеки на достижение лимита добавления шаров, до вызова метода добавления
+                if (!isMaxCircles(countCircles, maxCircles)){
+                    addSpritesClick();
+                }
             }
         });
 
@@ -72,12 +74,20 @@ public class Circles extends JFrame {
     }
 
     //Метод для добавления шаров по клику (добавляю объект Circle в свободную ячейку массива)
-    void addSpritesClick () {
-        if (countCircles < maxCircles){
+    private void addSpritesClick () {
         sprites[countCircles] = new Circle();
-        countCircles++;}
+        countCircles++;
+    }
+
+    //Добавил отдельный метод для проверки на превышение лимита добавления шаров
+    private boolean isMaxCircles(int countCircles, int maxCircles){
+        if (countCircles >= maxCircles){
+            Canvas.maxCountSprites();
+            return true;
+        }
         else {
-            System.out.println("Достигнуто максимальное количество шаров");
+            return false;
         }
     }
+
 }
