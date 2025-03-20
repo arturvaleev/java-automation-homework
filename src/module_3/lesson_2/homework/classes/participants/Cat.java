@@ -16,11 +16,7 @@ public class Cat implements Move {
 
     @Override
     public String jump(int height) {
-        if (height <= maxJumpHeight){
-            return name + " перепрыгнул " + height + " метров.";
-        } else {
-            return name + " не перепрыгнул " + height + " метров.";
-        }
+        return name + " перепрыгнул " + height + " метров.";
     }
 
     @Override

@@ -16,16 +16,12 @@ public class Human implements Move {
 
     @Override
     public String jump(int height) {
-            return name + " перепрыгнул " + height + " метров.";
+        return name + " перепрыгнул " + height + " метров.";
     }
 
     @Override
     public String run(int distance) {
-        if (distance <= maxRunDistance){
-            return name + " пробежал " + distance + " метров.";
-        } else {
-            return name + " не пробежал " + distance + " метров.";
-        }
+        return name + " пробежал " + distance + " метров.";
     }
 
     @Override

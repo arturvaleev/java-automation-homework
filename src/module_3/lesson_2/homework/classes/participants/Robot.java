@@ -16,12 +16,12 @@ public class Robot implements Move {
 
     @Override
     public String jump(int height) {
-            return name + " перепрыгнул " + height + " метров.";
+        return name + " перепрыгнул " + height + " метров.";
     }
 
     @Override
     public String run(int distance) {
-            return name + " пробежал " + distance + " метров.";
+        return name + " пробежал " + distance + " метров.";
     }
 
     @Override
