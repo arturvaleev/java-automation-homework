@@ -51,4 +51,9 @@ public class Canvas extends JPanel {
     public int getTop() {
         return 0;
     }
+
+    //Метод для вывода сообщения о достижении лимита на добавление объектов.
+    static public void maxCountSprites(){
+        JOptionPane.showMessageDialog(null, "Вы добавили максимальное количество объектов!", "Больше добавить не получится!", JOptionPane.ERROR_MESSAGE);
+    }
 }

@@ -1,6 +1,7 @@
 package module_3.lesson_1.homework.app.objects;
 
 import module_3.lesson_1.homework.app.Canvas;
+import module_3.lesson_1.homework.app.Circles;
 import module_3.lesson_1.homework.app.models.Sprite;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class Circle extends Sprite {
     }
 
     @Override
-    public void update(Canvas canvas, float deltaTime) {
+    public void update(Canvas canvas, float deltaTime, Sprite[] sprites) {
         x += vectorX * deltaTime;
         y += vectorY * deltaTime;
 
@@ -56,5 +57,49 @@ public class Circle extends Sprite {
             setBottom(canvas.getBottom());
             vectorY = -vectorY;
         }
+
+        //Проверяю шары на столкновение и меняю их направление
+        for (int i = 0; i < sprites.length; i++){
+
+            //Выхожу из цикла, если в массиве больше нет объектов
+            if (sprites[i] == null){
+                break;
+            }
+
+            //Проверка для исключения проверки столкновения шара с собой
+            if (this == sprites[i]){
+                continue;
+            }
+
+            //Проверяю шары на столкновение ( Использую очень сомнительную логику =) )getHalfWidth()
+            if (isChangeDirection(this, (Circle) sprites[i])){
+                this.changeDirection();
+                Circle otherCircle = (Circle) sprites[i];
+                otherCircle.changeDirection();
+            }
+        }
+    }
+
+    //Добавил метод для изменения направления движения
+    private void changeDirection() {
+        vectorX = -vectorX;
+        vectorY = -vectorY;
+    }
+
+    //Расчёт вычисления столкновений вынес в отдельный метод
+    public boolean isChangeDirection(Circle circle, Circle otherCircle){
+        //Разница по X и Y между центрами шаров
+        float dx = circle.getX() - otherCircle.getX();
+        float dy = circle.getY() - otherCircle.getY();
+
+        //Квадрат расстояния между центрами
+        float distanceSquared = dx * dx + dy * dy;
+
+        //Сумма радиусов (в квадрате)
+        float radiusSum = circle.getHalfWidth() + otherCircle.getHalfWidth();
+        float radiusSumSquared = radiusSum * radiusSum;
+
+        //Если квадрат расстояния меньше квадрата суммы радиусов, шары сталкиваются
+        return distanceSquared < radiusSumSquared;
     }
 }
