@@ -33,30 +33,14 @@ public class RunProgram {
         participants[5] = new Human(3, 120, "Вика");
 
         for (int i = 0; i < participants.length; i++) {
-
-            boolean canContinue = true;
-
+            System.out.println("\n--- Участник " + participants[i].getName() + " начал проходить премятствия. ---");
             for (int j = 0; j < obstacles.length; j++) {
 
-                if (!canContinue) {
+                if (obstacles[j].canOvercame(participants[i])){
+                    System.out.println(participants[i].getName() + " преодолел препятствие: " + obstacles[j].getName() + " с distance = " + obstacles[j].getLength());
+                } else {
+                    System.out.println("=== " + participants[i].getName() + " не смог преодолеть препятствие: " + obstacles[j].getName() + " с distance = " + obstacles[j].getLength() + " и поэтому выбывает. ===");
                     break;
-                }
-
-                if (obstacles[j] instanceof Wall) {
-                    if (participants[i].canJump(obstacles[j].getLength())) {
-                        System.out.println(participants[i].jump(obstacles[j].getLength()));
-                    } else {
-                        canContinue = false;
-                    }
-                }
-
-                if (obstacles[j] instanceof Treadmill) {
-
-                    if (participants[i].canRun(obstacles[j].getLength()) && canContinue) {
-                        System.out.println(participants[i].run(obstacles[j].getLength()));
-                    } else {
-                        canContinue = false;
-                    }
                 }
             }
         }

@@ -14,23 +14,17 @@ public class Robot implements Move {
         this.maxRunDistance = maxRunDistance;
     }
 
-    @Override
-    public String jump(int height) {
-        return name + " перепрыгнул " + height + " метров.";
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String run(int distance) {
-        return name + " пробежал " + distance + " метров.";
-    }
-
-    @Override
-    public Boolean canRun(int distance) {
+    public boolean canRun(int distance) {
         return distance <= maxRunDistance;
     }
 
     @Override
-    public Boolean canJump(int height) {
+    public boolean canJump(int height) {
         return height <= maxJumpHeight;
     }
 }
