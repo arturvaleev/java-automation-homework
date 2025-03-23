@@ -12,7 +12,5 @@ public class RunProgram {
         } catch (MyArrayDataException e) {
             System.out.println("Ошибка: " + e.getMessage());
         }
-
-
     }
 }
