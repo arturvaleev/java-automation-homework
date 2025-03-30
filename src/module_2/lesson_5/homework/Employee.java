@@ -1,4 +1,4 @@
-package lesson_5.homework;
+package module_2.lesson_5.homework;
 
 public class Employee {
 
