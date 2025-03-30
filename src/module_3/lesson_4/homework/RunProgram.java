@@ -13,13 +13,11 @@ public class RunProgram {
 
         System.out.println("     ===Задание 1===");
         String[] words = {"яблоко", "банан", "апельсин", "яблоко", "груша", "банан", "киви", "апельсин", "манго", "яблоко"};
-        String[] words2 = {};
         Map<String, Integer> wordCountMap;
 
         System.out.println("Только уникильные:");
-        words2 = WordsCount.getUniqueWords(words);
-        for (int i = 0; i < words2.length; i++) {
-            System.out.println(words2[i]);
+        for (int i = 0; i < WordsCount.getUniqueWords(words).length; i++) {
+            System.out.println(WordsCount.getUniqueWords(words)[i]);
         }
 
         System.out.println("Сколько раз встречается каждое слово:");
