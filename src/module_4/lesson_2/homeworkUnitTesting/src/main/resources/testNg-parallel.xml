@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParallelCalculatorTest" parallel="classes" thread-count="10">
+    <test name="Calculator Tests">
+        <groups>
+            <run>
+                <include name="math"/>
+                <include name="trig"/>
+                <include name="positiveOrNegative"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="org.example.*"/>
+        </packages>
+    </test>
+</suite>

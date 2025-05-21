@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="ParameterCalculatorTest">
+    <test name="Calculator Test">
+        <parameter name="a" value="1.5" />
+        <parameter name="b" value="2.5" />
+        <parameter name="expected" value="4.0" />
+        <classes>
+            <class name="org.example.SumDoubleCalculatorTestWithParam" />
+        </classes>
+    </test>
+</suite>
