@@ -29,7 +29,15 @@ public class Table extends UiComponent {
     }
 
     protected ElementsCollection getBodyRows() {
-        return element.find("tbody").shouldHave(Condition.visible).findAll("tr");
+        return getBodyRows("tbody", "tr");
+    }
+
+    public ElementsCollection getBodyRows(String bodySelector, String rowSelector) {
+        return element.find(bodySelector).shouldHave(Condition.visible).findAll(rowSelector);
+    }
+
+    public ElementsCollection getBodyRows(By bodySelector, By rowSelector) {
+        return element.find(bodySelector).shouldHave(Condition.visible).findAll(rowSelector);
     }
 
     protected void collectBodyRows() {

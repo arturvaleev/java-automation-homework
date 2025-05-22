@@ -33,7 +33,7 @@ public class DeleteUserPage extends BasePage {
         $(TITLE).shouldHave(Condition.visible).shouldHave(Condition.text(String.format(TITLE_VALUE, name, username)));
     }
 
-    public MainPage deleteContact() {
+    public MainPage deleteUser() {
         confirmCheckBox.clickCheckBox();
         deleteButton.click();
         return new MainPage();

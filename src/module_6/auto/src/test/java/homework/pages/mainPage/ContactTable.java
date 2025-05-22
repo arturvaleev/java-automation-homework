@@ -33,7 +33,7 @@ public class ContactTable extends Table {
     }
 
     public ContactTableDto getContactByRow(int rowNumber) {
-        collectBodyRows();
+        rows = getBodyRows("tbody", "tr");
         ElementsCollection rowsData = collectBodyRowData(rows.get(rowNumber));
         return ContactTableDto.builder()
                 .name(rowsData.get(0).getText())

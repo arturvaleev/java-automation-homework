@@ -23,6 +23,8 @@ public class BaseTestClass {
     protected static final String ADMIN_LOGIN = "admin";
     protected static final String ADMIN_PASSWORD = "root";
 
+
+
     @BeforeClass(alwaysRun = true)
     public void precondition() {
         logger.info("=== PREPARE TESTS START ===");
@@ -38,6 +40,12 @@ public class BaseTestClass {
     protected MainPage loginInSite() {
         return new LoginPage().enterLoginData(ADMIN_LOGIN)
                 .enterPasswordData(ADMIN_PASSWORD)
+                .pressLogin();
+    }
+
+    protected MainPage loginInSiteWithCredentials(String login, String password) {
+        return new LoginPage().enterLoginData(login)
+                .enterPasswordData(password)
                 .pressLogin();
     }
 

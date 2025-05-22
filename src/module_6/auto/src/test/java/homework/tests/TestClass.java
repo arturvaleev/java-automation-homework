@@ -13,7 +13,7 @@ import homework.entities.UserEntity;
 import homework.pages.userPage.DeleteUserPage;
 import homework.pages.userPage.UserPage;
 import homework.pages.mainPage.MainPage;
-import homework.pages.userPage.models.UserTableDto;
+import homework.pages.mainPage.models.UserTableDto;
 
 import java.util.Locale;
 
@@ -65,7 +65,7 @@ public class TestClass extends BaseTestClass {
                 .isEqualTo(userEntity.getUsername());
 
         DeleteUserPage deleteUserPage = userPage.getUserTable().deleteUserByRow(0);
-        mainPage = deleteUserPage.deleteContact();
+        mainPage = deleteUserPage.deleteUser();
         String successDeleteUserText = mainPage.getPagePopup().getText();
         assertThat(successDeleteUserText)
                 .as("Check Popup Text Success Delete User")

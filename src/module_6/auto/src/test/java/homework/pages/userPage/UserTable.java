@@ -1,5 +1,6 @@
 package homework.pages.userPage;
 
+import homework.pages.cotactInfoPage.ContactInfoPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -8,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import homework.elements.Table;
 import homework.pages.userPage.models.UserAction;
-import homework.pages.userPage.models.UserTableDto;
+import homework.pages.mainPage.models.UserTableDto;
 
 /**
  * Created by Aleksandr Gladkov [Anticisco]
@@ -33,7 +34,7 @@ public class UserTable extends Table {
         return element.find(EMPTY_ROW).getText();
     }
 
-    public UserTableDto getContactByRow(int rowNumber) {
+    public UserTableDto getUserByRow(int rowNumber) {
         collectBodyRows();
         ElementsCollection rowsData = collectBodyRowData(rows.get(rowNumber));
         return UserTableDto.builder()
@@ -43,7 +44,7 @@ public class UserTable extends Table {
     }
 
     public UserTableDto getFirstTableUser() {
-        return getContactByRow(0);
+        return getUserByRow(0);
     }
 
     public SingleUserPage updateUserByRow(int rowNumber) {
@@ -58,16 +59,24 @@ public class UserTable extends Table {
         return new SingleUserPage(name, username);
     }
 
+    public SingleUserPage navigateToFirstTableRowUpdateUserPage() {
+        return updateUserByRow(0);
+    }
+
     public DeleteUserPage deleteUserByRow(int rowNumber) {
         collectBodyRows();
         ElementsCollection rowsData = collectBodyRowData(rows.get(rowNumber));
         String name = rowsData.get(0).getText();
         String username = rowsData.get(1).getText();
-        SelenideElement updateUserButton = rows.get(rowNumber).findAll("a").filter(Condition.text(UserAction.DELETE.getValue())).first();
-        String updateUserButtonText = updateUserButton.getText();
-        updateUserButton.click();
+        SelenideElement deleteUserButton = rows.get(rowNumber).findAll("a").filter(Condition.text(UserAction.DELETE.getValue())).first();
+        String updateUserButtonText = deleteUserButton.getText();
+        deleteUserButton.click();
         logger.info("User click [{}] for user [{}]", updateUserButtonText, username);
         return new DeleteUserPage(name, username);
+    }
+
+    public DeleteUserPage navigateToFirstTableRowDeleteUserPage() {
+        return deleteUserByRow(0);
     }
 
 }

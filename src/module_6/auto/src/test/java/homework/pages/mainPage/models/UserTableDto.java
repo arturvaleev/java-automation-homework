@@ -1,4 +1,4 @@
-package homework.pages.userPage.models;
+package homework.pages.mainPage.models;
 
 import lombok.Builder;
 import lombok.Data;

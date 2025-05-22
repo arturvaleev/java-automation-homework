@@ -24,6 +24,12 @@ public class Input extends UiComponent {
         logger.info("User click [Input:{}] and send data [{}]", inputName, data);
     }
 
+    public Input clearInput() {
+        element.clear();
+        logger.info("User clear element Input");
+        return this;
+    }
+
     public void clickCheckBox() {
         element.click();
         logger.info("User click for Confirm Checkbox");

@@ -27,8 +27,8 @@ public class SingleUserPage extends BasePage {
     public static final String UPDATE_TITLE_VALUE = "%s [%s] - Update User";
 
     private static final By SUBMIT_BUTTON = By.cssSelector("button[type='submit']");
-    private static final By UPDATE_NAME_SUBMIT_BUTTON = By.cssSelector("button[type='submit_name']");
-    private static final By UPDATE_PASSWORD_SUBMIT_BUTTON = By.cssSelector("button[type='submit_password']");
+    private static final By UPDATE_NAME_SUBMIT_BUTTON = By.cssSelector("button[name='submit_name']");
+    private static final By UPDATE_PASSWORD_SUBMIT_BUTTON = By.cssSelector("button[name='submit_password']");
 
     private final Input fullName = UiComponentFactory.createInput(getInputByName("full_name"));
     private final Input username = UiComponentFactory.createInput(getInputByName("username"));
@@ -65,8 +65,8 @@ public class SingleUserPage extends BasePage {
         if (!isUpdateUserState) {
             throw new InvalidElementStateException("Wrong Page State: Add New User");
         }
-        fullName.fillData(userEntity.getFullName());
-        username.fillData(userEntity.getUsername());
+        fullName.clearInput().fillData(userEntity.getFullName());
+        username.clearInput().fillData(userEntity.getUsername());
         return this;
     }
 
@@ -93,7 +93,4 @@ public class SingleUserPage extends BasePage {
         saveNewUser.click();
         return new MainPage();
     }
-
-
-
 }
