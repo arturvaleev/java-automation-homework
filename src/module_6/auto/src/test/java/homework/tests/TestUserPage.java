@@ -1,28 +1,29 @@
 package homework.tests;
 
-import com.github.javafaker.Faker;
-import homework.BaseTestClass;
 import homework.components.PagePopup;
 import homework.elements.Table;
 import homework.entities.UserEntity;
-import homework.pages.mainPage.MainPage;
 import homework.pages.mainPage.models.UserTableDto;
 import homework.pages.userPage.DeleteUserPage;
 import homework.pages.userPage.SingleUserPage;
 import homework.pages.userPage.UserPage;
+import com.github.javafaker.Faker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import homework.BaseTestClass;
+import homework.pages.mainPage.MainPage;
 
 import java.util.Locale;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestUpdateUser extends BaseTestClass {
+public class TestUserPage extends BaseTestClass {
 
-    private static final Logger logger = LoggerFactory.getLogger(TestCreateUser.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestUserPage.class);
     private static final Locale LOCALE = Locale.ENGLISH;
 
     private final Faker faker = Faker.instance();
@@ -48,8 +49,8 @@ public class TestUpdateUser extends BaseTestClass {
                 .withPassword("Password" + faker.number());
     }
 
-    @Test
-    public void testUpdateUserName() throws InterruptedException {
+    @Test (priority = 1)
+    public void testCreateUser() {
         mainPage = loginInSite();
         SingleUserPage firstUserPage = mainPage.goToAddUserPage();
         mainPage = firstUserPage.fillNewUserData(userForSave).saveNewUser();
@@ -70,6 +71,10 @@ public class TestUpdateUser extends BaseTestClass {
         assertThat(firstUser.getUsername())
                 .as("Check Username")
                 .isEqualTo(userForSave.getUsername());
+    }
+
+    @Test (priority = 2)
+    public void testUpdateUserName() {
 
         SingleUserPage singleUserPage = mainPage.getUserTable().navigateToFirstTableRowUpdateUserPage();
         singleUserPage.editUserName(userForUpdate).confirmChangeUserName();
@@ -88,50 +93,16 @@ public class TestUpdateUser extends BaseTestClass {
         assertThat(updateUser.getUsername())
                 .as("Check Username")
                 .isEqualTo(userForUpdate.getUsername());
-
-        DeleteUserPage deleteUserPage = mainPage.getUserTable().navigateToFirstTableRowDeleteUserPage();
-        mainPage = deleteUserPage.deleteUser();
-        String deleteTextPopup = mainPage.getPagePopup().getText();
-        assertThat(deleteTextPopup)
-                .as("Check Delete Text Popup")
-                .isEqualTo(PagePopup.SUCCESS_USER_DELETE);
-
-        UserPage userPage = mainPage.goToUserPage();
-        userPage.findUser(userForSave.getUsername());
-        String emptyRowText = userPage.getUserTable().getEmptyRowText();
-        assertThat(emptyRowText)
-                .as("Check Empty Row In User Table")
-                .isEqualTo(Table.EMPTY_ROW_TEXT);
     }
 
-    @Test
-    public void testUpdateUserPassword() {
-        mainPage = loginInSite();
-        SingleUserPage firstUserPage = mainPage.goToAddUserPage();
-        mainPage = firstUserPage.fillNewUserData(userForSave).saveNewUser();
-
-        successPopupMessage = mainPage.getPagePopup().getText();
-        successPopupColor = mainPage.getPagePopup().getBackgroundColor();
-        Assert.assertEquals(successPopupMessage, PagePopup.SUCCESS_USER_CREATE);
-        Assert.assertEquals(successPopupColor, PagePopup.SUCCESS_POPUP_COLOR);
-
-        mainPage.goToUserPage();
-
-        mainPage.findUser(userForSave.getUsername());
-        UserTableDto firstUser = mainPage.getUserTable().getFirstTableUser();
-
-        assertThat(firstUser.getName())
-                .as("Check User FullName")
-                .isEqualTo(userForSave.getFullName());
-        assertThat(firstUser.getUsername())
-                .as("Check Username")
-                .isEqualTo(userForSave.getUsername());
+    @Test (priority = 3)
+    public void testUpdateUserPassword() throws InterruptedException {
 
         SingleUserPage singleUserPage = mainPage.getUserTable().navigateToFirstTableRowUpdateUserPage();
         singleUserPage.editUserPassword(userForUpdate).confirmChangeUserPassword();
 
         mainPage.logout();
-        mainPage = loginInSiteWithCredentials(userForSave.getUsername(), userForUpdate.getPassword());
+        mainPage = loginInSiteWithCredentials(userForUpdate.getUsername(), userForUpdate.getPassword());
 
         successPopupMessage = mainPage.getPagePopup().getText();
         successPopupColor = mainPage.getPagePopup().getBackgroundColor();
@@ -139,11 +110,15 @@ public class TestUpdateUser extends BaseTestClass {
         Assert.assertEquals(successPopupColor, PagePopup.SUCCESS_POPUP_COLOR);
 
         mainPage.logout();
+    }
+
+    @Test (priority = 4)
+    public void testDeleteUser() {
+
         mainPage = loginInSite();
-
         mainPage.goToUserPage();
+        mainPage.findUser(userForUpdate.getUsername());
 
-        mainPage.findUser(userForSave.getUsername());
         DeleteUserPage deleteUserPage = mainPage.getUserTable().navigateToFirstTableRowDeleteUserPage();
         mainPage = deleteUserPage.deleteUser();
         String deleteTextPopup = mainPage.getPagePopup().getText();
