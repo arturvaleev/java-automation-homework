@@ -1,9 +1,9 @@
-package homework.pages.ApiPage;
+package homework.pages.apiPage;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import homework.pages.ApiPage.models.ApiAction;
+import homework.pages.apiPage.models.ApiAction;
 import homework.pages.mainPage.models.ApiTableDto;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;

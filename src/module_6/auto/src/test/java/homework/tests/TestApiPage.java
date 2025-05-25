@@ -4,9 +4,9 @@ import homework.components.PagePopup;
 import homework.elements.Table;
 import homework.entities.ApiEntity;
 import com.github.javafaker.Faker;
-import homework.pages.ApiPage.AddEditApiPage;
-import homework.pages.ApiPage.ApiPage;
-import homework.pages.ApiPage.DeleteApiPage;
+import homework.pages.apiPage.AddEditApiPage;
+import homework.pages.apiPage.ApiPage;
+import homework.pages.apiPage.DeleteApiPage;
 import homework.pages.mainPage.models.ApiTableDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +70,7 @@ public class TestApiPage extends BaseTestClass {
     }
 
     @Test(priority = 2)
-    public void testUpdateApiToken() throws InterruptedException {
+    public void testUpdateApiToken() {
 
         AddEditApiPage editApiPage = mainPage.getApiTable().navigateToFirstTableRowUpdateApiPage();
         editApiPage.editApiName(apiForUpdate).confirmChangeApiName();
@@ -92,7 +92,7 @@ public class TestApiPage extends BaseTestClass {
     }
 
     @Test(priority = 3)
-    public void testDeleteApiToken() throws InterruptedException {
+    public void testDeleteApiToken() {
 
         DeleteApiPage deleteApiPage = mainPage.getApiTable().navigateToFirstTableRowDeleteApiPage();
         mainPage = deleteApiPage.deleteApi();

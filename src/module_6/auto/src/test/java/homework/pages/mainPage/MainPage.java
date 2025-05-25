@@ -1,7 +1,8 @@
 package homework.pages.mainPage;
 
-import homework.pages.ApiPage.AddEditApiPage;
-import homework.pages.ApiPage.ApiTable;
+import homework.pages.apiPage.AddEditApiPage;
+import homework.pages.apiPage.ApiTable;
+import homework.pages.logsPage.LogsTable;
 import homework.pages.userPage.SingleUserPage;
 import homework.pages.userPage.UserTable;
 import org.openqa.selenium.By;
@@ -30,6 +31,7 @@ public class MainPage extends BasePage {
     private final ContactTable contactTable = new ContactTable();
     private final UserTable userTable = new UserTable();
     private final ApiTable apiTable = new ApiTable();
+    private final LogsTable logsTable = new LogsTable();
     private final Button addContactButton = UiComponentFactory.createButton(ADD_CONTACT_BUTTON);
     private final Button addUserButton = UiComponentFactory.createButton(ADD_USER_BUTTON);
     private final Button addApiButton = UiComponentFactory.createButton(ADD_API_BUTTON);
@@ -64,6 +66,10 @@ public class MainPage extends BasePage {
 
     public ApiTable getApiTable() {
         return apiTable;
+    }
+
+    public LogsTable getLogsTable() {
+        return logsTable;
     }
 
     public PagePopup getPagePopup() {

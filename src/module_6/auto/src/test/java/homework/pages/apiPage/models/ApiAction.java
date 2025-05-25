@@ -1,4 +1,4 @@
-package homework.pages.ApiPage.models;
+package homework.pages.apiPage.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

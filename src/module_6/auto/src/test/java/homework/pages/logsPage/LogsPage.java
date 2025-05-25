@@ -1,5 +1,6 @@
-package homework.pages;
+package homework.pages.logsPage;
 
+import homework.pages.BasePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

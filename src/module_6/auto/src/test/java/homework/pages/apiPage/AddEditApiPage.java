@@ -1,4 +1,4 @@
-package homework.pages.ApiPage;
+package homework.pages.apiPage;
 
 import com.codeborne.selenide.Condition;
 import homework.entities.ApiEntity;

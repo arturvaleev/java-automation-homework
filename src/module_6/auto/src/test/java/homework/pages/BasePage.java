@@ -1,6 +1,7 @@
 package homework.pages;
 
-import homework.pages.ApiPage.ApiPage;
+import homework.pages.apiPage.ApiPage;
+import homework.pages.logsPage.LogsPage;
 import org.openqa.selenium.By;
 import homework.components.NavigationBar;
 import homework.components.PagePopup;

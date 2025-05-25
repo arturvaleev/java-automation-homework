@@ -1,4 +1,4 @@
-package homework.pages.ApiPage;
+package homework.pages.apiPage;
 
 import homework.elements.Button;
 import homework.elements.Input;
