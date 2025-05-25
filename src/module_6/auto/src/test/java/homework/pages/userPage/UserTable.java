@@ -1,6 +1,5 @@
 package homework.pages.userPage;
 
-import homework.pages.cotactInfoPage.ContactInfoPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;

@@ -1,5 +1,7 @@
 package homework.pages.mainPage;
 
+import homework.pages.ApiPage.AddEditApiPage;
+import homework.pages.ApiPage.ApiTable;
 import homework.pages.userPage.SingleUserPage;
 import homework.pages.userPage.UserTable;
 import org.openqa.selenium.By;
@@ -22,12 +24,15 @@ public class MainPage extends BasePage {
 
     private static final By ADD_CONTACT_BUTTON = By.cssSelector("a[data-testid='add_contact']");
     private static final By ADD_USER_BUTTON = By.cssSelector("a[href='add-user.php']");
+    private static final By ADD_API_BUTTON = By.cssSelector("a[type='button']");
     private static final By FIND_INPUT = By.cssSelector("input[type='search']");
 
     private final ContactTable contactTable = new ContactTable();
     private final UserTable userTable = new UserTable();
+    private final ApiTable apiTable = new ApiTable();
     private final Button addContactButton = UiComponentFactory.createButton(ADD_CONTACT_BUTTON);
     private final Button addUserButton = UiComponentFactory.createButton(ADD_USER_BUTTON);
+    private final Button addApiButton = UiComponentFactory.createButton(ADD_API_BUTTON);
     private final Input findInput = UiComponentFactory.createInput(FIND_INPUT);
 
     public MainPage() {
@@ -44,12 +49,21 @@ public class MainPage extends BasePage {
         return this;
     }
 
+    public MainPage findApi(String searchText) {
+        findInput.fillData(searchText);
+        return this;
+    }
+
     public ContactTable getContactTable() {
         return contactTable;
     }
 
     public UserTable getUserTable() {
         return userTable;
+    }
+
+    public ApiTable getApiTable() {
+        return apiTable;
     }
 
     public PagePopup getPagePopup() {
@@ -65,5 +79,11 @@ public class MainPage extends BasePage {
         goToUserPage();
         addUserButton.click();
         return new SingleUserPage();
+    }
+
+    public AddEditApiPage goToAddApiTokenPage() {
+        goToApiPage();
+        addApiButton.click();
+        return new AddEditApiPage();
     }
 }
