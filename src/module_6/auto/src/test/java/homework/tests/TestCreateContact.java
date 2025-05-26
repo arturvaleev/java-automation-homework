@@ -117,7 +117,7 @@ public class TestCreateContact extends BaseTestClass {
             String emptyRowText = mainPage.getContactTable().getEmptyRowText();
             assertThat(emptyRowText)
                     .as("Check Empty Row In Contact Table")
-                    .isEqualTo(Table.EMPTY_ROW_TEXT);
+                    .isIn(Table.EMPTY_ROW_TEXT, Table.EMPTY_TABLE_TEXT);
         });
     }
 

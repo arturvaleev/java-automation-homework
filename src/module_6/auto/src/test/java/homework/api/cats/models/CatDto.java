@@ -1,4 +1,4 @@
-package homework.api.models;
+package homework.api.cats.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

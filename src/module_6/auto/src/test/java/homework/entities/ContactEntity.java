@@ -113,4 +113,8 @@ public class ContactEntity {
     public String getFullName() {
         return String.format("%s %s %s", name, middleName, lastName);
     }
+
+    public String getFirsAndLastName() {
+        return String.format("%s %s", name, lastName);
+    }
 }

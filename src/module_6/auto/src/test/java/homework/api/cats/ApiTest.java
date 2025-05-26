@@ -1,10 +1,10 @@
-package homework.api;
+package homework.api.cats;
 
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import homework.api.models.CatDto;
-import homework.api.models.StatusDto;
+import homework.api.cats.models.CatDto;
+import homework.api.cats.models.StatusDto;
 
 import java.util.List;
 import java.util.Random;

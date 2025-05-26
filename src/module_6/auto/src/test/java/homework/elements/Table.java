@@ -17,6 +17,7 @@ public class Table extends UiComponent {
     private static final Logger logger = LoggerFactory.getLogger(Table.class);
 
     public static final String EMPTY_ROW_TEXT = "No matching records found";
+    public static final String EMPTY_TABLE_TEXT = "No data available in table";
 
     protected ElementsCollection rows;
 

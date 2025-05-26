@@ -45,7 +45,7 @@ public class TestLogsPage extends BaseTestClass {
     }
 
     @Test(priority = 1)
-    public void testLogs() throws InterruptedException {
+    public void testLogs() {
 
         LogsTableDto firstLogs = mainPage.getLogsTable().getLogByRow(0);
         LogsTableDto secondLogs = mainPage.getLogsTable().getLogByRow(1);

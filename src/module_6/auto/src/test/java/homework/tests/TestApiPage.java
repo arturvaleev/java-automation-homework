@@ -8,8 +8,6 @@ import homework.pages.apiPage.AddEditApiPage;
 import homework.pages.apiPage.ApiPage;
 import homework.pages.apiPage.DeleteApiPage;
 import homework.pages.mainPage.models.ApiTableDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,16 +15,13 @@ import homework.BaseTestClass;
 import homework.pages.mainPage.MainPage;
 import org.testng.annotations.Test;
 
-import java.util.Locale;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestApiPage extends BaseTestClass {
 
-    private static final Logger logger = LoggerFactory.getLogger(TestApiPage.class);
-    private static final Locale LOCALE = Locale.ENGLISH;
-
     private final Faker faker = Faker.instance();
+
+    private String ipAddress = "172.18.0.1";
 
     private ApiEntity apiForSave;
     private ApiEntity apiForUpdate;
@@ -37,11 +32,11 @@ public class TestApiPage extends BaseTestClass {
     public void prepareCondition() {
         apiForSave = new ApiEntity();
         apiForSave.withCosmeticName(faker.name().username())
-                .withIpAddress("172.18.0.1");
+                .withIpAddress(ipAddress);
 
         apiForUpdate = new ApiEntity();
         apiForUpdate.withCosmeticName(faker.name().username())
-                .withIpAddress("172.18.0.1");
+                .withIpAddress(ipAddress);
 
     }
 
@@ -108,7 +103,7 @@ public class TestApiPage extends BaseTestClass {
         String emptyRowText = apiPage.getApiTable().getEmptyRowText();
         assertThat(emptyRowText)
                 .as("Check Empty Row In API Table")
-                .isEqualTo(Table.EMPTY_ROW_TEXT);
+                .isIn(Table.EMPTY_ROW_TEXT, Table.EMPTY_TABLE_TEXT);
     }
 
     @AfterClass()

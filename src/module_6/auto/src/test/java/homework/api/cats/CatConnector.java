@@ -1,9 +1,9 @@
-package homework.api;
+package homework.api.cats;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
-import homework.api.models.*;
+import homework.api.cats.models.*;
 
 import java.util.List;
 

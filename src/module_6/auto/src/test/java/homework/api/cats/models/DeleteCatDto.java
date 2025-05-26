@@ -1,4 +1,4 @@
-package homework.api.models;
+package homework.api.cats.models;
 
 import lombok.Getter;
 

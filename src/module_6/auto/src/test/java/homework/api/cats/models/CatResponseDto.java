@@ -1,8 +1,6 @@
-package homework.api.models;
+package homework.api.cats.models;
 
 import lombok.Getter;
-
-import java.util.List;
 
 /**
  * Created by Aleksandr Gladkov [Anticisco]
@@ -10,7 +8,7 @@ import java.util.List;
  */
 
 @Getter
-public class CatListResponseDto {
+public class CatResponseDto {
     private StatusDto status;
-    private List<CatDto> data;
+    private CatDto data;
 }
