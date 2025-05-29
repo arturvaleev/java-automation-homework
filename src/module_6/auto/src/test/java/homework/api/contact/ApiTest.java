@@ -10,7 +10,6 @@ import homework.pages.cotactInfoPage.AddEditContactPage;
 import homework.pages.cotactInfoPage.ContactInfoPage;
 import homework.pages.mainPage.models.ApiTableDto;
 import org.assertj.core.api.SoftAssertions;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import homework.BaseTestClass;
 import homework.pages.mainPage.MainPage;
@@ -20,13 +19,13 @@ import java.time.LocalDate;
 
 public class ApiTest extends BaseTestClass {
 
-    private String token;
-    private String method = "findNumber";
-    private String number;
-    private String fullName;
-    private String successMessage = "API call successful.";
-    private Integer successCode = 1;
-    private String ipAddress = "172.18.0.1";
+    private static String token;
+    private static String method = "findNumber";
+    private static String number;
+    private static String fullName;
+    private static String successMessage = "API call successful.";
+    private static Integer successCode = 1;
+    private static String ipAddress = "172.18.0.1";
 
     private final Faker faker = Faker.instance();
 
@@ -37,7 +36,7 @@ public class ApiTest extends BaseTestClass {
 
 
     @BeforeClass
-    public void prepareCondition() {
+    private void apiPrepareCondition() {
 
         contactForSave = new ContactEntity();
         contactForSave.withName(faker.elderScrolls().firstName())
@@ -59,6 +58,10 @@ public class ApiTest extends BaseTestClass {
         apiForSave = new ApiEntity();
         apiForSave.withCosmeticName(faker.name().username())
                 .withIpAddress(ipAddress);
+    }
+
+    @Test
+    public void apiFindNumberTest() {
 
         mainPage = loginInSite();
         AddEditContactPage addEditContactPage = mainPage.goToAddContactPage();
@@ -72,10 +75,6 @@ public class ApiTest extends BaseTestClass {
         token = firstApi.getApiToken();
         number = contactForSave.getMobileNumber();
         fullName = contactForSave.getFirsAndLastName();
-    }
-
-    @Test
-    public void apiFindNumberTest() {
 
         FindNumberResponseDto actualFindNumber = contactSystemConnector.findNumber(token, method, number);
 
@@ -98,10 +97,7 @@ public class ApiTest extends BaseTestClass {
                             .isEqualTo(successMessage);
                 }
         );
-    }
 
-    @AfterClass
-    public void afterAction() {
         DeleteApiPage deleteApiPage = mainPage.getApiTable().navigateToFirstTableRowDeleteApiPage();
         mainPage = deleteApiPage.deleteApi();
         mainPage.goToAddressBookPage();

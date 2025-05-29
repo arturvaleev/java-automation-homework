@@ -23,7 +23,8 @@ public class BaseTestClass {
     protected static final String ADMIN_LOGIN = "admin";
     protected static final String ADMIN_PASSWORD = "root";
 
-
+    protected static final Integer SUCCESS_STATUS = 1;
+    protected static final String SUCCESS_MESSAGE = "OK";
 
     @BeforeClass(alwaysRun = true)
     public void precondition() {

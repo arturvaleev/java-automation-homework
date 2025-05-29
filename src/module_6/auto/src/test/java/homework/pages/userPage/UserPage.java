@@ -23,22 +23,10 @@ public class UserPage extends BasePage {
 
     private final Button addUserButton = UiComponentFactory.createButton(ADD_USER_BUTTON);
     private final Input findInput = UiComponentFactory.createInput(FIND_INPUT);
-    private final Button deleteUser = UiComponentFactory.createButton(DELETE_BUTTON);
-
-    private final String name;
-    private final String userName;
 
     private final UserTable userTable = new UserTable();
 
-    public UserPage(String name, String userName) {
-        this.name = name;
-        this.userName = userName;
-        logger.info("Navigate to UserPage");
-    }
-
     public UserPage() {
-        this.name = "";
-        this.userName = "";
         logger.info("Navigate to UserPage");
     }
 
@@ -55,10 +43,4 @@ public class UserPage extends BasePage {
     public UserTable getUserTable() {
         return userTable;
     }
-
-    public DeleteUserPage navigateToDeleteUser() {
-        deleteUser.click();
-        return new DeleteUserPage(name, userName);
-    }
-
 }

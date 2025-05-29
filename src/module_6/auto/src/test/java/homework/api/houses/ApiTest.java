@@ -1,5 +1,6 @@
 package homework.api.houses;
 
+import homework.BaseTestClass;
 import homework.api.cats.CatConnector;
 import homework.api.cats.models.CatDto;
 import homework.api.houses.models.HouseDto;
@@ -14,12 +15,9 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ApiTest {
+public class ApiTest extends BaseTestClass {
 
     private static final Random RANDOM = new Random();
-
-    private static final Integer SUCCESS_STATUS = 1;
-    private static final String SUCCESS_MESSAGE = "OK";
 
     private static final String NEW_CAT_NAME_TEMPLATE = "Name_%s";
     private static final String NEW_COLOR_TEMPLATE = "Color_%s";
@@ -35,7 +33,7 @@ public class ApiTest {
     private CatDto catEntity;
 
     @BeforeClass
-    private void precondition() {
+    private void apiPrecondition() {
         houseEntity = HouseDto.builder()
                 .name(String.format(NEW_NAME_TEMPLATE, System.currentTimeMillis()))
                 .build();

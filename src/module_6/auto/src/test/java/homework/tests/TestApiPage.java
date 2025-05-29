@@ -21,7 +21,7 @@ public class TestApiPage extends BaseTestClass {
 
     private final Faker faker = Faker.instance();
 
-    private String ipAddress = "172.18.0.1";
+    private static String ipAddress = "172.18.0.1";
 
     private ApiEntity apiForSave;
     private ApiEntity apiForUpdate;

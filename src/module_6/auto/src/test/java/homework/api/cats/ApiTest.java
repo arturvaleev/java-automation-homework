@@ -1,5 +1,6 @@
 package homework.api.cats;
 
+import homework.BaseTestClass;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -16,9 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Date: 16.05.2025
  */
 
-public class ApiTest {
+public class ApiTest extends BaseTestClass {
 
-    private static final String EXPECTED_CAT = "Cat 26";
     private static final Random RANDOM = new Random();
 
     private static final String NEW_NAME_TEMPLATE = "Name_%s";
@@ -30,7 +30,7 @@ public class ApiTest {
     private CatDto catEntity;
 
     @BeforeClass
-    private void precondition() {
+    private void apiPrecondition() {
         catEntity = CatDto.builder()
                 .name(String.format(NEW_NAME_TEMPLATE, System.currentTimeMillis()))
                 .age(RANDOM.nextInt(10, 100))
@@ -100,7 +100,7 @@ public class ApiTest {
 
         assertThat(statusDeleteCat.getStatus())
                 .as("Check Delete Status")
-                .isEqualTo(1);
+                .isEqualTo(SUCCESS_STATUS);
     }
 
     @Test(priority = 6)
